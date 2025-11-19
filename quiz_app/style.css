@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=TASA+Explorer:wght@400..800&display=swap');
+
+*{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: "TASA Explorer", sans-serif;
+}
+body{
+      background-color: #E8F1F5;
+}
+.quiz_form{
+      margin: auto;
+      width: 70%;
+      display: flex;
+      justify-content: space-around;
+}
+.quiz_head{
+      text-align: center;
+      padding: 2%;
+      /* background-color: #bee9e8; */
+      margin-bottom: 2%;
+      font-size: 1.4rem;
+}
+.quizBlock{
+      font-size: 1.1rem;
+      width: 80%;
+      margin : auto;
+      padding: 2% 5%;
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+      background-color: #FFFFFF;
+      border-radius: 4rem;
+}
+.options_section{
+      display: flex;
+      justify-content: space-around;
+}
+.submitBlock{
+      display: flex;
+      justify-content: center;
+      margin: 2%;
+}
+.messageBlock{
+      text-align: center;
+      margin: 2%;
+      font-size: 1.3rem;
+}
+#question{
+      text-align: center;
+      margin: 1rem;
+}
+.quizBlockDetails{
+      margin: 2% 2% 2% 0;
+      display: flex;
+      justify-content: space-between;
+}
+
+.options_section > div{
+      display: flex;
+      align-items: center;
+      column-gap: 0.5rem;
+      padding: 0.5rem 1rem;
+}
+.options_section > div > input{
+      height: 1rem;
+      width: 1rem;
+}
+.options_section > div > input:hover {
+      cursor: pointer;
+}
+.hide{
+      display: none;
+}
+button{
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      border: none;
+      background-color: #62b6cb;
+      color: white;
+}
+button:hover{
+      cursor: pointer;
+}
+.start_quizz_btn_block{
+      padding: 2%;
+      text-align: center;
+}

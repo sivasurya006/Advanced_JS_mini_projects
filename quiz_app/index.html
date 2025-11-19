@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Quizz App</title>
+      <script src="script.js" defer></script>
+      <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      <header class="quiz_head">
+            <h1>Quizz App</h1>
+      </header>
+      <main>
+            <section class="quiz_form">
+                  <div>
+                        <label for="quizz_count">Number of questions</label>
+                        <input type="number" max="50" min="1" id="quizz_count" value="5">
+                  </div>
+                  <div>
+                  <label for="quizz_category">Category</label>
+                        <select id="quizz_category">
+                        	<option value="any">Any Category</option>
+                  		<option value="9">General Knowledge</option>
+                              <option value="10">Entertainment: Books</option>
+                              <option value="11">Entertainment: Film</option>
+                              <option value="12">Entertainment: Music</option>
+                              <option value="13">Entertainment: Musicals &amp; Theatres</option>           <option value="14">Entertainment: Television</option>
+                              <option value="15">Entertainment: Video Games</option>
+                              <option value="16">Entertainment: Board Games</option>
+                              <option value="17">Science &amp; Nature</option>
+                              <option value="18">Science: Computers</option>
+                              <option value="19">Science: Mathematics</option>
+                              <option value="20">Mythology</option>
+                              <option value="21">Sports</option>
+                              <option value="22">Geography</option>
+                              <option value="23">History</option>
+                              <option value="24">Politics</option>
+                              <option value="25">Art</option>
+                              <option value="26">Celebrities</option>
+                              <option value="27">Animals</option>
+                              <option value="28">Vehicles</option>
+                              <option value="29">Entertainment: Comics</option>
+                              <option value="30">Science: Gadgets</option>
+                              <option value="31">Entertainment: Japanese Anime &amp; Manga</option>       <option value="32">Entertainment: Cartoon &amp; Animations</option>
+                        </select>
+                 </div>
+                 <div>
+                     <label for="quizz_difficulty">Difficulty</label>
+                     <select id="quizz_difficulty">
+                  	<option value="any">Any Difficulty</option>
+            		<option value="easy">Easy</option>
+      			<option value="medium">Medium</option>
+                  	<option value="hard">Hard</option>
+                      </select>
+                 </div>
+                 <div>
+                        <label for="quizz_type">Type</label>
+                              <select id="quizz_type">
+                                    <option value="any">Any Type</option>
+                                    <option value="multiple">Multiple Choice</option>
+                                    <option value="boolean">True / False</option>
+                              </select>
+                        </label>
+                 </div>
+                 
+            </section>
+            <div class="start_quizz_btn_block">
+                  <button class="primaryBtn" id="start_quizz">Start Quizz</button>
+            </div>
+            <section id="quizBlock" class="hide quizBlock">
+                 
+                  <div class="quizBlockDetails">
+                        <p id="category"></p>
+                        <p id="ques_count"><span id="currunt_ques"></span>/<span id="total_ques"></span></p>
+                        <p id="difficulty"></p>
+                  </div>
+                  <h2 id="question"></h2>
+                  <section class="options_section" id="options">
+                        <div>
+                              <input type="radio" id="o1" name="options">
+                              <label id="opt1"></label>
+                        </div>
+                        <div>
+                              <input type="radio" id="o2" name="options">
+                              <label id="opt2"></label>
+                        </div>
+                        <div>
+                              <input type="radio" id="o3" name="options">
+                              <label id="opt3"></label>
+                        </div>
+                        <div>
+                              <input type="radio" id="o4" name="options">
+                              <label id="opt4"></label>
+                        </div>
+                  </section>
+                  <div class="submitBlock">
+                        <button id="submit">submit</button>
+                  </div>
+            </section>
+            <section class="messageBlock">
+                  <p id="message"></p>
+            </section>
+      </main>
+      <footer>
+
+      </footer>
+
+</body>
+</html>

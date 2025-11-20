@@ -66,16 +66,16 @@ function show(response) {
 
       let j = 0;
       if (ques.type === "boolean") {
-            option_inputs[2].style.display = "none";
-            option_inputs[3].style.display = "none";
-            option_labels[2].style.display = "none";
-            option_labels[3].style.display = "none";
+            option_inputs[2].parentElement.style.display = "none";
+            option_inputs[3].parentElement.style.display = "none";
+            option_labels[2].parentElement.style.display = "none";
+            option_labels[3].parentElement.style.display = "none";
             opt_count = 2;
       } else {
-            option_inputs[2].style.display = "inline";
-            option_inputs[3].style.display = "inline";
-            option_labels[2].style.display = "inline";
-            option_labels[3].style.display = "inline";
+            option_inputs[2].parentElement.style.display = "inline";
+            option_inputs[3].parentElement.style.display = "inline";
+            option_labels[2].parentElement.style.display = "inline";
+            option_labels[3].parentElement.style.display = "inline";
             opt_count = 4;
       }
       let correct_pos = Math.floor(Math.random() * opt_count);

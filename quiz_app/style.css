@@ -35,7 +35,7 @@ body{
 }
 .options_section{
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
 }
 .submitBlock{
       display: flex;
@@ -54,7 +54,12 @@ body{
 .quizBlockDetails{
       margin: 2% 2% 2% 0;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
+}
+.quiz_countDisplay{
+      margin: 2% 2% 2% 0;
+      display: flex;
+      justify-content: center;
 }
 
 .options_section > div{

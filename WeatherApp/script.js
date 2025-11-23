@@ -1,8 +1,20 @@
 // setView call also returns the map object
 // element id as a parameter 
-const map = L.map('map').setView([8.902699984038293, 77.33574313876575], 13);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+
+const defaultLatLng = {
+    lat : 8.902699984038293,
+    lng : 77.33574313876575
+}
+
+const API_KEY = "58ad14bdd0724b84bce00c5661ccf730";   // For reverse Geocoding
+const tileLayerURL = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+const weatherURL = "https://api.open-meteo.com/v1/forecast?";
+
+
+const map = L.map('map').setView([defaultLatLng.lat,defaultLatLng.lng], 12);
+
+L.tileLayer(tileLayerURL, {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
@@ -10,8 +22,8 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 map.on('click', onMapClick);
 
 
-let marker = L.marker([8.902699984038293, 77.33574313876575]).addTo(map);
-marker.bindPopup("<b>Pick Your Location</b>").openPopup();
+let marker = L.marker([defaultLatLng.lat,defaultLatLng.lng]).addTo(map);
+getPlaceName(defaultLatLng);
 let popup = L.popup();
 
 
@@ -22,10 +34,12 @@ function onMapClick(e) {
 }
 
 function getPlaceName(latlng){
-    fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latlng.lat}&lon=${latlng.lng}&format=json`)
+    fetch(`https://api.opencagedata.com/geocode/v1/json?key=${API_KEY}&q=${latlng.lat}%2C+${latlng.lng}`)
         .then((res) =>  res.json())
         .then((data) => {
            showPopUp(latlng,data);
+           updateCurrentDetails(latlng,data);
+           fetchWeatherDetails(latlng,data.results[0].annotations.timezone.name);
         }).catch((err) => {
             console.log(err);
         });
@@ -33,17 +47,77 @@ function getPlaceName(latlng){
 
 function showPopUp(latlng,data){
     popup.setLatLng(latlng)
-            .setContent(data.display_name ?? "Can't get place name")
+            .setContent(data.results[0].formatted ?? "Can't get place name")
             .openOn(map);
     marker.bindPopup(markerPopUp(data));
 }
 
 
 function markerPopUp(data){
-    return `<b>${data.display_name ?? "Can't get place name"}</b>`;
+    return `<b>${data.results[0].formatted ?? "Can't get place name"}</b>`;
+}
+
+
+function updateCurrentDetails(latlng,data){
+    country.innerText = data.results[0].components.country;
+    state.innerText = data.results[0].components.state;
+    coordinates.innerText = latlng.lat.toFixed(2) + " / " + latlng.lng.toFixed(2);
+    let entries = Object.entries(data.results[0].components);
+    let areaData =  entries[entries.length - 1];
+    area.innerText = getProperName(areaData[0])+ " : " ;
+    areaName.innerText = areaData[1];
 }
 
 
 
+function getProperName(name){
+    return name.split("_").map((data) => data.charAt(0).toUpperCase() + data.slice(1).toLowerCase()).join(" ")
+}
 
+function fetchWeatherDetails(latlng,timezone){
+    console.log("TimeZone : "+timezone);
+    fetch(weatherURL+`latitude=${latlng.lat}&longitude=${latlng.lng}&current_weather=true&hourly=temperature_2m,relative_humidity_2m&timezone=${timezone}&hourly=weathercode`)
+        .then((res) => res.json())
+        .then((data) => {
+            loadWeatherDetails(data);
+        }).catch((err) => {
+            console.log(err);
+        });
+}
+
+function loadWeatherDetails(data){
+    showCurrentWeatherDetails(data.current_weather,data.current_weather_units);
+}
+
+function showCurrentWeatherDetails(weather,units){
+    currentWeatherIcon.src = iconURL[weather.weathercode] ?? "./images/Cloud.png";
+    windSpeed.innerText = weather.windspeed+" "+units.windspeed;
+    temp.innerText = weather.temperature+" "+units.temperature;
+    day.innerText = DAYS[weather.is_day];
+}
+
+const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+const iconURL = {
+    0 : "./images/Sun.png",
+    1 : "./images/Sun.png",
+    2 : "./images/Cloudy_Sky.png",
+    3 : "./images/Cloudy_Sky.png",
+    4 : "./images/Cloudy_Sky.png",
+
+    61 : "./images/Rain.png",
+    62 : "./images/Rain.png",
+    63 : "./images/Rain.png",
+    64 : "./images/Rain.png",
+
+    71 : "./images/Snow.png",
+    72 : "./images/Snow.png",
+    73 : "./images/Snow.png",
+    74 : "./images/Snow.png",
+    75 : "./images/Snow.png",
+
+    95 : "./images/Thunderstorm.png",
+    96 : "./images/Thunderstorm.png",
+    97 : "./images/Thunderstorm.png"
     
+}

@@ -1,8 +1,48 @@
 body{
-    background-color: #3d1010;
+    background-color: #FFFFFF;
+}
+
+.primarySection{
+    display: flex;
+    padding: 2% 15%;
+}
+
+.primarySection .mapSection{
+    width: 40%;
+}
+
+.primarySection .currentDetailsSection{
+    width: 60%;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+}
+.weatherBox img{
+    width: 200px;
+    height: 200px;
+    transform: scale(1.7);
+}
+
+.weatherBox, .componentsBox{
+    padding: 1rem;
+    border: 1px solid black;
+    margin: 1rem;
+    border-radius: 12px;
+    height: 90%;
+}
+
+.componentsBox{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 2rem;
 }
 
 
+
 #map {
-    height: 480px;
+    height: 100%;
 }

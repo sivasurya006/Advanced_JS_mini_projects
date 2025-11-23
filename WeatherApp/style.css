@@ -18,7 +18,7 @@ body{
     justify-content: center;
     align-items: center;
 }
-.weatherBox img{
+.weatherBox img, .upWeatherBox img{
     width: 200px;
     height: 200px;
     transform: scale(1.7);
@@ -31,6 +31,26 @@ body{
     border-radius: 12px;
     height: 90%;
 }
+
+#upComingWeatherBoxes {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.upWeatherBox{
+    width: 250px;
+    padding: 1rem;
+    border: 1px solid black;
+    margin: 1rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .componentsBox{
     width: 30%;

@@ -1,5 +1,6 @@
 // setView call also returns the map object
 // element id as a parameter 
+// Change ICON display Method
 
 
 const defaultLatLng = {
@@ -10,6 +11,7 @@ const defaultLatLng = {
 const API_KEY = "58ad14bdd0724b84bce00c5661ccf730";   // For reverse Geocoding
 const tileLayerURL = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
 const weatherURL = "https://api.open-meteo.com/v1/forecast?";
+
 
 
 const map = L.map('map').setView([defaultLatLng.lat,defaultLatLng.lng], 12);
@@ -23,8 +25,10 @@ map.on('click', onMapClick);
 
 
 let marker = L.marker([defaultLatLng.lat,defaultLatLng.lng]).addTo(map);
-getPlaceName(defaultLatLng);
+// getPlaceName(defaultLatLng);
 let popup = L.popup();
+
+
 
 
 function onMapClick(e) {
@@ -87,6 +91,7 @@ function fetchWeatherDetails(latlng,timezone){
 
 function loadWeatherDetails(data){
     showCurrentWeatherDetails(data.current_weather,data.current_weather_units);
+    showUpComingWeatherDetails(data.hourly_units,data.hourly);
 }
 
 function showCurrentWeatherDetails(weather,units){
@@ -94,6 +99,38 @@ function showCurrentWeatherDetails(weather,units){
     windSpeed.innerText = weather.windspeed+" "+units.windspeed;
     temp.innerText = weather.temperature+" "+units.temperature;
     day.innerText = DAYS[weather.is_day];
+}
+
+function showUpComingWeatherDetails(units,hourly){
+    upComingWeatherBoxes.innerHTML = '';
+    const tempUnit = units.temperature_2m;
+    const humidityUnit = units.relative_humidity_2m;
+    for(let i=0;i<hourly.time.length;i++){
+        let temp = {
+            val : hourly.temperature_2m[i],
+            unit : tempUnit
+        }
+        humidity = {
+            val : hourly.relative_humidity_2m[i],
+            unit : humidityUnit
+        }
+        // console.log(createWeatherBox(temp,humidity,hourly.weathercode[i],hourly.time[i]));
+        upComingWeatherBoxes.innerHTML += createWeatherBox(temp,humidity,hourly.weathercode[i],hourly.time[i]);
+    }
+}
+
+
+function createWeatherBox(temp,humidity,weathercode,date){
+    return ` <div class="upWeatherBox">
+                <div class="weatherIconContainer">
+                    <img src=${iconURL[weathercode] ?? "./images/Cloud.png"} />
+                </div>
+                <div>
+                    <p>Temperature : <span>${temp.val+temp.unit}</span></p>
+                    <p>Humidity : <span>${humidity.val+humidity.unit}</span></p>
+                    <p>Date : <span>${date}</span></p>
+                </div>
+            </div> `;
 }
 
 const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -118,6 +155,5 @@ const iconURL = {
 
     95 : "./images/Thunderstorm.png",
     96 : "./images/Thunderstorm.png",
-    97 : "./images/Thunderstorm.png"
-    
+    97 : "./images/Thunderstorm.png"  
 }

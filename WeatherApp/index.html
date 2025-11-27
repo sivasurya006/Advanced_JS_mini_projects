@@ -28,6 +28,9 @@
   <body>
     <header class="mainHeader">
       <h1 class="mainHead">Weather IQ</h1>
+      
+    </header>
+    <main id="mainSection">
       <div class="searchSection">
         <div>
             <input type="search" id="searchBox" placeholder="Enter the Placename">
@@ -35,9 +38,8 @@
         <select id="placesSelect" class="hide">
             
         </select>
+        <p id="placeMsg"></p>
       </div>
-    </header>
-    <main>
       <section class="primarySection">
         <section class="currentDetailsSection">
           <div class="componentsBox">
@@ -64,6 +66,9 @@
           <div id="map"></div>
         </section>
       </section>
+      <div class="buttonBox">
+        <button id="currentBtn" class="hide">Current Weather</button>
+      </div>
       <section id="upComingWeatherBoxes">
         
       </section>

@@ -63,6 +63,7 @@ function getPlaceName(latlng,pop = true){
            updateCurrentDetails(latlng,data);
            fetchWeatherDetails(latlng,data.results[0].annotations.timezone.name);
         }).catch((err) => {
+            mainSection.innerHTML = `<p class="error">Can't fetch weather details please try again</p>`;
             console.log(err);
         });
 }
@@ -92,6 +93,8 @@ function updateCurrentDetails(latlng,data){
 
 searchBox.addEventListener('keydown',(e) => {
     if(e.key == "Enter" && searchBox.value.length > 0){
+        placesSelect.classList.add('hide');
+        placeMsg.innerText = '';
         forwardGeoCoding(searchBox.value);
     }
 });
@@ -105,11 +108,17 @@ function forwardGeoCoding(placeName){
     }).then((obj) => {
         showOptions(obj);
     }).catch((err) => {
+        mainSection.innerHTML = `<p class="error">Can't fetch weather details please try again</p>`;
         console.log(err);
     });
 }
 
 function showOptions(data){
+    placeMsg.innerText = '';
+    if(data.total_results == 0){
+        placeMsg.innerText = 'Place not Found!';
+        return;
+    }
     if(data.total_results == 1){
         let result = data.results[0];
         getPlaceName({lat :result.geometry.lat ,lng : result.geometry.lng});
@@ -162,6 +171,7 @@ function fetchWeatherDetails(latlng,timezone){
         .then((data) => {
             loadWeatherDetails(data);
         }).catch((err) => {
+            mainSection.innerHTML = `<p class="error">Can't fetch weather details please try again</p>`;
             console.log(err);
         });
 }
@@ -191,20 +201,39 @@ function showUpComingWeatherDetails(units,hourly){
             val : hourly.relative_humidity_2m[i],
             unit : humidityUnit
         }
-        upComingWeatherBoxes.innerHTML += createWeatherBox(temp,humidity,hourly.weathercode[i],new Date(hourly.time[i]));
+        let wBox;
+        let founded = false;
+        if(!founded && i == new Date().getHours()){
+            wBox = createWeatherBox(temp,humidity,hourly.weathercode[i],new Date(hourly.time[i]),"current");
+            founded = true;
+        }else{
+            wBox = createWeatherBox(temp,humidity,hourly.weathercode[i],new Date(hourly.time[i]));
+        }
+        upComingWeatherBoxes.innerHTML += wBox;
     }
+    current.scrollIntoView({
+        inline: 'center'
+    });
+    console.log(currentBtn);
+    currentBtn.classList.remove('hide');
 }
 
+currentBtn.addEventListener('click',() => {
+    current.scrollIntoView({
+        inline: 'center'
+    });
+});
 
-function createWeatherBox(temp,humidity,weathercode,date){
+function createWeatherBox(temp,humidity,weathercode,date,id){
     const options = {
         hour: "2-digit",
         minute: undefined,
         second: undefined,
         hour12: true
       };
-    return ` <div class="upWeatherBox">
-                <div class="time">${date.toLocaleTimeString('en-in',options)}</div>
+      console.log(id == "current");
+    return ` <div class="upWeatherBox" id=${id ?? ""}>
+                <div class="time">${ id == "current" ? "Now" : date.toLocaleTimeString('en-in',options)}</div>
                 <div class="weatherIconContainer">
                     <img src=${iconURL[weathercode] ?? "./images/Cloud.png"} />
                 </div>

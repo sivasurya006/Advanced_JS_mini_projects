@@ -209,13 +209,13 @@ button:disabled {
 
 .popup {
     position: fixed;
-    top: 50%;
+    top: 25%;
     left: 50%;
     background: #EAF4FF;
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    width: 300px;
+    width: 300px;  top: 50%;
     z-index: 2;
 }
 

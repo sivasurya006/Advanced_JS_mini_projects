@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Flights</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script src="https://kit.fontawesome.com/e371a44102.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <h1>Flight Tracker  <span class="subHead">- Real-time Flight Status</span></h1>
+    </header>
+    <main>
+        <aside class="asideSection">
+            <div>
+                <p>Search by</p>
+                <input type="radio" value="dep_iata" name="iataCode" id="dIata" checked>
+                <label for="dIata">Departures</label>
+                <input type="radio" value="arr_iata" name="iataCode" id="aIata">
+                <label for="aIata">Arrivals</label>
+            </div>
+            <div class="inputSection">
+                <label for="input">Airport IATA Code</label>
+                <input type="text" id="input" placeholder="E.G.,LHR, JFK, AMS">
+                <button id="searchBtn">search</button>
+            </div>
+        </aside>
+        <section class="mainSection">
+            <section id="flightDataContainer" class="flightDataContainer">
+                <i class="fa-solid fa-plane logo"></i>
+            </section>
+            <section id="navButtons" class="navButtons hidden">
+                <button id="prevPage" disabled>prev</button>
+                <button id="nextPage">next</button>
+            </section>
+        </section>
+        
+
+        <div id="overlay" class="overlay hidden"></div>
+
+        <div id="popup" class="popup hidden">
+
+            <p id="closePopup"><i class="fa-solid fa-xmark"></i></p>
+
+            <h2 id="popupTitle"></h2>
+        
+            <div class="popup-section">
+                <h3>Airline</h3>
+                <p id="airline"></p>
+            </div>
+        
+            <div class="popup-section">
+                <h3>Departure</h3>
+                <p id="dep"></p>
+            </div>
+        
+            <div class="popup-section">
+                <h3>Arrival</h3>
+                <p id="arr"></p>
+            </div>
+        
+            <div class="popup-section">
+                <h3>Status</h3>
+                <p id="status"></p>
+            </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>

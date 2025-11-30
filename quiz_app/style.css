@@ -54,8 +54,19 @@ body{
 .quizBlockDetails{
       margin: 2% 2% 2% 0;
       display: flex;
-      justify-content: space-around;
+     align-items: center;
 }
+
+.quizBlockDetails > p{
+      text-align: center;
+      width: 33.33%;
+}
+
+#timer{
+      font-size: 2rem;
+      font-weight: 600;
+}
+
 .quiz_countDisplay{
       margin: 2% 2% 2% 0;
       display: flex;

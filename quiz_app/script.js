@@ -1,3 +1,6 @@
+
+
+
 const question = document.getElementById("question");
 const category = document.getElementById("category");
 const opt1 = document.getElementById('opt1');
@@ -25,39 +28,52 @@ let option_labels = [opt1,opt2,opt3,opt4];
 let option_inputs = [o1,o2,o3,o4];
 let q_num;
 let ques;
-let responce;
+let response;
 let count;
 
+ // ================ New Code =====================
 
+ let timeouts = [];     // need to clearTimeout if user enter correct answer
 
-
-// I create new object
-const xhr = new XMLHttpRequest();
-
-// Open a XMLHttpRequest();
-function call(url){
-      xhr.open("GET", url); // default is true
-      // send() the request
-      xhr.send();
-
-      xhr.onload = function () {
-          if (xhr.status === 200) {
-            responce = JSON.parse(xhr.responseText);
-            if (responce.response_code !== 1){
-                  show(responce);
-            }else{
-                  quizBlock.classList.add("hide");
-                  console.log(responce.response_code);
-                  msg.innerText = "Can't get question. Please Try again!";
-            }
-           } else {
-                  quizBlock.classList.add("hide");
-                  msg.innerText = "error "+xhr.status;
-            }
+async function call(url){
+      try {
+            const res = await fetch(url);  // fetch resolves here
+            const data = await res.json(); // parse JSON
+            response = data;
+            show(data)
+            console.log(data);
+      }catch (err) {
+            quizBlock.classList.add("hide");
+            msg.innerText = "Can't get question. Please Try again!";
+            console.log(err)
       }
 }
 
-function show(response) {
+async function startTimer(sec){
+      return new Promise((resolve) => {
+            for(let i=0;i<sec;i++){
+                  let to = setTimeout(() => {
+                        timer.innerText = (sec-i);
+                  },i*1000);
+                  timeouts.push(to);
+            }
+            let to = setTimeout(() => {
+                  timeouts = [];  // if it resolve then the stored callbacks not needed
+                  resolve("Times up!");
+            },sec*1000);
+            timeouts.push(to);
+      });
+}
+
+
+async function show(response) {
+      if(!(q_num < count)){
+            setTimeout(() => {
+                  msg.innerText = "All questions are finished! Start again the Quizz.";
+                  quizBlock.classList.add('hide');
+            },1500);
+            return;
+      }
       ques = response.results[q_num++];
       currunt_ques.innerText = q_num;
       category.innerHTML = "Category : " + ques.category
@@ -90,7 +106,13 @@ function show(response) {
       }
       console.log(correct_pos);
       quizBlock.classList.remove("hide");
+
+      // Calling Timer
+      await startTimer(10);
+      show(response);
 }
+
+// ==========================================================
 
 start_quizz.addEventListener('click',() => {
       q_num = 0;
@@ -141,17 +163,14 @@ submit.addEventListener('click',() => {
       }else{
             if(selectedValue === ques.correct_answer){
                   msg.innerText = "Correct answer !!!";
-                 if(q_num < count){
-                        show(responce);
-                        setTimeout(() => {
-                              msg.innerText = "";
-                        },1000);
-                 }else{
+                  timeouts.forEach((to) => {
+                        clearTimeout(to);      // Clear the TimeOut functions 
+                        console.log(to);
+                  });
                   setTimeout(() => {
-                        msg.innerText = "All questions are finished! Start again the Quizz.";
-                        quizBlock.classList.add('hide');
+                        msg.innerText = "";
                   },1000);
-                 }
+                  show(response);
             }else{
                   msg.innerText = "Wrong answer !!!";
                   setTimeout(() => {

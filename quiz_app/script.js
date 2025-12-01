@@ -30,6 +30,7 @@ let q_num;
 let ques;
 let response;
 let count;
+let isQuizActive = false;
 
  // ================ New Code =====================
 
@@ -39,8 +40,10 @@ async function call(url){
       try {
             const res = await fetch(url);  // fetch resolves here
             const data = await res.json(); // parse JSON
-            response = data;
-            show(data)
+            if(!(data.results.length ==  0)){
+                  response = data;
+                  show(data);
+            }  
             console.log(data);
       }catch (err) {
             quizBlock.classList.add("hide");
@@ -74,6 +77,9 @@ async function show(response) {
             },1500);
             return;
       }
+      option_inputs.forEach((opt) => {
+            opt.checked = false;
+      })
       ques = response.results[q_num++];
       currunt_ques.innerText = q_num;
       category.innerHTML = "Category : " + ques.category
@@ -114,7 +120,13 @@ async function show(response) {
 
 // ==========================================================
 
-start_quizz.addEventListener('click',() => {
+start_quizz.addEventListener('click',async () => {
+      if(isQuizActive){
+            // @@ Implement PopUp for Restart the Quiz;
+            clearAllTimeouts();
+            response = {};
+      }
+      isQuizActive = true;
       q_num = 0;
       // https://opentdb.com/api.php?amount=10&category=9&difficulty=hard&type=boolean
       let url = "https://opentdb.com/api.php?amount=";
@@ -139,7 +151,9 @@ start_quizz.addEventListener('click',() => {
             url +="&type="+q_type;
       }
       console.log(url);
-      call(url);
+      banner.classList.remove('hide');
+      await call(url);
+      banner.classList.add('hide');
       total_ques.innerText = count;
     
 });
@@ -163,10 +177,7 @@ submit.addEventListener('click',() => {
       }else{
             if(selectedValue === ques.correct_answer){
                   msg.innerText = "Correct answer !!!";
-                  timeouts.forEach((to) => {
-                        clearTimeout(to);      // Clear the TimeOut functions 
-                        console.log(to);
-                  });
+                  clearAllTimeouts();
                   setTimeout(() => {
                         msg.innerText = "";
                   },1000);
@@ -179,3 +190,11 @@ submit.addEventListener('click',() => {
             }
       }
 });
+
+
+function clearAllTimeouts(){
+      timeouts.forEach((to) => {
+            clearTimeout(to);      // Clear the TimeOut functions 
+            console.log(to);
+      });
+}

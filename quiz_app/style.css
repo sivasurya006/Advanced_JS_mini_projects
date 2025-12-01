@@ -86,9 +86,6 @@ body{
 .options_section > div > input:hover {
       cursor: pointer;
 }
-.hide{
-      display: none;
-}
 button{
       padding: 0.5rem 1rem;
       border-radius: 4px;
@@ -102,4 +99,33 @@ button:hover{
 .start_quizz_btn_block{
       padding: 2%;
       text-align: center;
+}
+
+.quizBannerPopUp{
+      position: fixed;
+      height: 100vh;
+      width: 100vw;
+      top: 0;
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+}
+
+.spinner{
+      font-size: 5rem;
+      color: rgba(0, 0, 0, 0.8);
+      animation: spin 1s linear 0s  infinite;
+}
+
+@keyframes spin {
+      0%{
+            transform: rotate(0deg);
+      }100%{
+            transform: rotate(360deg);
+      }
+}
+
+.hide{
+      display: none;
 }

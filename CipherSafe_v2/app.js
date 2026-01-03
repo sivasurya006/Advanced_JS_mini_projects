@@ -275,7 +275,7 @@ app.post('/update_password',verifyToken,async (req,res) => {
             return res.status(400).json({ok:false,msg : result.msg});
         }
 
-        return res.redirect('/logout')
+        return res.json({ok:true,msg:"password updated"});
     }
     catch (err) {
         console.error(err);

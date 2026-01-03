@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encrypt - CipherSafe</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/e371a44102.js" crossorigin="anonymous"></script>
+    <script src="js/script.js" type="module" defer></script>
+    <script src="js/components.js" defer></script>
+    <style>
+        .empty-state {
+            background-color: #0E1119;
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 420px;
+            margin: 3rem auto;
+            text-align: center;
+        }
+
+        .empty-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.85;
+        }
+
+        .empty-state h1 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .empty-state p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-state p:last-child {
+            margin-bottom: 0;
+        }
+
+        .outer-container {
+            height: calc(100vh - 15rem);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+    </style>
+</head>
+<body>
+    <%-include('partials/header.ejs') %>
+
+    <div id="errPopup" class="errPopup hidden">
+        <div id="errMsgContainer" class="errInfo">
+            <span id="popupIconContainer"></span>
+            <span id="errMsg"></span>
+        </div>
+    </div>
+
+    <% if(files.length == 0){ %>
+        <div class="outer-container">
+            <div class="empty-state">
+                <div class="empty-icon"><i class="fa-regular fa-file-lines" style="color: #f97316;"></i></div>
+                <h1>No history available</h1>
+                <p>Server storage is currently disabled, so no files are saved.</p>
+                <p>Enable Server Storage in settings to store and access files here.</p>
+            </div>
+        </div>
+    <% }  %>
+
+    <div class="history-container">
+        
+        <% files.forEach(file => { %>
+            <file-download data-id="<%=file.id %>"  data-name="<%=file.original_filename %>" data-created="<%=file.created_at.toLocaleString()%>" ></file-download>
+        <%  });  %>
+    </div>
+    
+
+    
+
+</body>
+</html>

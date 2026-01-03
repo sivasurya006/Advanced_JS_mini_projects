@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CipherSafe</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+       .center{
+            width:  100%;
+            height: calc(100vh - 15rem);
+            display: flex;
+            align-items:center;
+            justify-content: center;
+        }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        width: 450px;
+      }
+
+      .image-container img {
+        width: 200px;
+      }
+
+      h1 {
+        font-size: 2rem;
+        color: #f97316;
+        margin: 0;
+      }
+
+      p {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.7);
+        margin: 0.5rem 0 1.5rem 0;
+      }
+
+      a.back-button {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background-color: #f97316;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+      }
+
+      a.back-button:hover {
+        background-color: #fb923c;
+      }
+    </style>
+  </head>
+  <body>
+   <div class="center">
+    <div class="container">
+        <div class="image-container">
+          <img src="images/gifs/404.gif" alt="404 Not Found" />
+        </div>
+        <h1>Page Not Found</h1>
+        <p>The page you're looking for doesn't exist or has been moved.</p>
+        <a href="/" class="back-button">Go back to CipherSafe</a>
+      </div>
+   </div>
+  </body>
+</html>

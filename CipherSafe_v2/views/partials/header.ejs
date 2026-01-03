@@ -1,0 +1,15 @@
+<header>
+    <div class="logo-section">
+        <a href="/"><img src="/images/logo.png"></a>
+        <a href="/"><p id="brandName">CipherSafe</p></a>
+    </div>
+    <div id="nav">
+        <ul>
+            <li><a href="/" class="<%= currentRoute == '/' ? 'active' : '' %>">Home</a></li>
+            <li><a href="/encrypt" class="<%= currentRoute == '/encrypt' ? 'active' : '' %>">Encrypt</a></li>
+            <li><a href="/decrypt" class="<%= currentRoute == '/decrypt' ? 'active' : '' %>">Decrypt</a></li>
+            <li><a href="/settings" class="<%= currentRoute == '/settings' ? 'active' : '' %>">Settings</a></li>
+            <li><a href="/history" class="<%= currentRoute == '/history' ? 'active' : '' %>">History</a></li>
+        </ul>
+    </div>
+</header>

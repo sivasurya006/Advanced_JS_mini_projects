@@ -3,10 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/script.js" defer></script>
     <title><%=title %></title>
 </head>
 <body>
     <%-include('./partials/header.ejs') %>
+    <main>
+        <section class="calculators">
+            <section id="calculators" class="calculators-container">
+                <div data-value="bmi-calculator">
+                    <div class="icon-container">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <h3>BMI Calculator</h3>
+                    <p>Calculate your Body Mass Index</p>
+                </div>
+            </section>
+        </section>
+    </main>
     <%-include('./partials/footer.ejs') %>
 </body>
 </html>

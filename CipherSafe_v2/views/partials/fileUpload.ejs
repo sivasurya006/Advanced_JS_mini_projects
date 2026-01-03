@@ -1,0 +1,45 @@
+<div id="errPopup" class="errPopup hidden">
+    <div id="errMsgContainer" class="errInfo">
+        <span id="popupIconContainer"></span>
+        <span id="errMsg"></span>
+    </div>
+</div>
+
+
+<section id="process" class="process-section">
+    
+    
+    <h2 class="large-head"><%= heading %></h2>
+
+    <p class="content"><%= content %></p>
+    <div class="upload-container">
+
+
+        <div class="input-container">
+            <div class="icon-wrapper">
+                <i class="fa-solid fa-file-arrow-up medium-icon"></i>
+            </div>
+            <div class="constraints">
+                <p><%= browseText %></p>
+                <p id="supported-files"><%= supportedFiles %></p>
+            </div>
+            
+            <div class="file-upload-wrapper">
+                <label id="upload-button" for="user-file">Choose File</label>
+                <input type="file" id="user-file" style="display:none;" />
+                <div id="file-name">No file selected</div>
+            </div>
+            
+
+            <img src="/images/gifs/CipherSafe.gif" class="loader hidden" id="loader"></img>
+        
+            <div class="upload-buttons">
+                <button class="download-btn hidden" id="downloadBtn">Download File</button>
+                <button class="Back-btn hidden" id="backBtn">Back</button>
+            </div>
+
+        </div>
+
+    </div>
+    <button data-action=<%= buttonAction %>  id="processBtn"> <%= buttonText %></button>
+</section>

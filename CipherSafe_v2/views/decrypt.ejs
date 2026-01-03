@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decrypt - CipherSafe</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/e371a44102.js" crossorigin="anonymous"></script>
+    <script src="js/script.js" type="module" defer></script>
+</head>
+<body>
+    <%-include('partials/header.ejs') %>
+    <main class="main-section">
+        <%- include('partials/fileUpload.ejs', {
+            heading: 'Decrypt Your File',
+            content: 'Select the encrypted file and click Process to decrypt it.',
+            browseText: 'Click to select file',
+            supportedFiles: 'Supported formats: .txt, .enc',
+            buttonText: 'Decrypt File',
+            buttonAction : 'decrypt'
+        }) %>
+        <section class="key-section">
+            <input placeholder="Enter your key" type="password" id="key">
+            <div id="key-limitations">
+                <p><strong>Important :</strong></p>
+                <ul>
+                    <li>If the wrong key is provided, the downloaded file may be corrupted and cannot be decrypted.</li>
+                    <li>Losing the key means the file cannot be recovered if server storage is disabled.</li>
+                    <li>Do not share your key with anyone else; it is required to decrypt your file securely.</li>
+                    <li>Copy the key exactly, as even a small typo will prevent decryption.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+  
+</body>
+</html>

@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CipherSafe</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/e371a44102.js" crossorigin="anonymous"></script>
+    <script src="js/script.js" type="module" defer></script>
+</head>
+<body>
+    <%-include('partials/header.ejs')%>
+    <main class="main-section">
+        <!-- <%-include('partials/permissionPopup.ejs')%> -->
+
+        <section class="home" id="home-section">
+            <h1 class="large-head">Your Digital Vault</h1>
+            <p class="content">
+                Securely encrypt and decrypt your files with confidence. Choose an action to get started.
+            </p>
+            <div class="options" id="home-options">
+                <div>
+                    <div class="small-icon-wrapper">
+                        <i class="fa-solid fa-lock small-icon"></i>
+                    </div>
+                    <h3>Encrypt File</h3>
+                    <p class="content">Transform your file into a secure format that only you can access.</p>
+    
+                    <button class="encrypt-button" id="encryptNow">Encrypt Now</button>
+                    
+                </div>
+                <div>
+                    <div class="small-icon-wrapper">
+                        <i class="fa-solid fa-lock-open small-icon"></i>
+                    </div>
+                    <h3>Decrypt File</h3>
+                    <p class="content">Restore your encrypted file to its original, readable state.</p>
+                    <button class="decrypt-button" id="decryptNow">Decrypt Now</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+   
+</body>
+</html>

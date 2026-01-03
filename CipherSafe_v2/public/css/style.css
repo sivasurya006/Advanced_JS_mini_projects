@@ -1,0 +1,508 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scrollbar-width: none;
+}
+
+body{
+    background-color: black;
+    color: white;
+    font-family: "Roboto Mono", monospace;
+    margin-top: 5rem;
+
+}
+
+
+
+
+#brandName{
+    font-size: 1.4rem;
+}
+
+/* ======= Header Design ============ */
+
+header{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    height: 5rem;
+    top: 0%;
+    gap: 10%;
+    width: 100%;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logo-section{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+header > div  a{
+    text-decoration: none;
+    color: white;
+}
+
+header > div > ul li a:hover {
+    color: #EA580C;
+    transition: color 0.3s ease; 
+}
+
+header > div > ul li{
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom-color 0.3s ease;
+
+}
+
+header > div > ul{
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.icon{
+    color: #F97316;
+    font-size: 4rem;
+}
+
+
+
+
+
+/* ============== Permission Box ==========*/
+.main-section { 
+    min-height: calc(100vh - 5rem);
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    text-align: center;  
+    column-gap: 5%;    
+}
+
+
+#permission-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 1rem;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.icon-wrapper{
+    height: 125px;
+    width: 125px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #190C02;
+}
+.large-head{
+    font-size: 1.9rem;
+}
+
+.button-container{
+    width: 100%;
+}
+
+
+
+#permission-box > div > button{
+    color: white;
+    font-family: "Roboto Mono", monospace;
+    width: 40%;
+    font-size: 0.9rem;
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: none;
+    font-weight: 900;
+}
+#deny-button{
+    background-color: #0D0D0D;
+}
+#allow-button , .encrypt-button{
+    background-color: #F97316 ;
+}
+
+#allow-button:hover , .encrypt-button:hover{
+    cursor: pointer;
+    background-color: #EA580C !important;
+}
+
+#deny-button:hover, .decrypt-button:hover{
+    cursor: pointer;
+    background-color: #0D0D0D !important;
+}
+
+
+/* home design */
+
+.home{
+    text-align: center;
+    max-width: 700px;
+    width: 100%;
+}
+
+.options{
+    display: flex;
+}
+
+.options > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 1rem;
+    background-color: #0E1119;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    width: 50%;
+    margin: 1rem;
+}
+
+.options button{
+    color: white;
+    font-family: "Roboto Mono", monospace;
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: none;
+    font-weight: 900;
+}
+
+.small-icon-wrapper{
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3D2418;
+}
+
+.decrypt-button{
+    color: #F97316 !important;
+    background-color: #0D0D0D;
+    border: 1px solid #F97316 !important;
+}
+
+.small-icon{
+    color: #F97316;
+    font-size: 1.8rem;
+}
+
+.home{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.home > p{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.active{
+    color: #EA580C;
+}
+
+
+
+
+.process-section{
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.process-section .input-container{
+    border: 1px dashed #2A2A2A;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    border-radius: 15px;
+    padding: 2rem;
+    background-color: #0E1119;
+}
+
+.medium-icon{
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 2.8rem;
+}
+.constraints > p:first-child{
+    font-size: 1.3rem;
+}
+.constraints >  p:last-child{
+    margin: 0.4rem 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.process-section button{
+    color: white;
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.9rem;
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: none;
+    font-weight: 900;
+    background-color: #F97316 ;
+}
+
+.process-section button:hover{
+    cursor: pointer;
+    background-color: #EA580C !important;
+}
+
+
+#upload-button {
+    margin: 1rem;
+    padding: 0.8rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    font-weight: 900;
+    color: #F97316;
+    background-color: #0D0D0D;
+    border: 1px solid #F97316;
+    display: inline-block;
+    text-align: center;
+}
+
+#upload-button:hover {
+    background-color: #0D0D0D !important;
+}
+
+#file-name {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+
+#download{
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    text-decoration: none;
+    background-color: #F97316 ;
+    color: white;
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.9rem;
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: none;
+    font-weight: 900;
+}
+
+
+#loader{
+    width: 250px;         
+    height: auto;
+}
+
+.hidden{
+    display: none !important; 
+}
+
+.errInfo{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    position: fixed;
+    top: 20px; 
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    animation: pop-down 0.5s linear;
+    border-radius: 8px;
+    z-index: 10;
+}
+
+@keyframes pop-down {
+    0%{
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+.err{
+    background-color: rgba(249, 115, 22, 1);
+}
+
+.info{
+    background-color: #F97316;
+}
+
+.errPopup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.fa-circle-exclamation, .fa-face-smile{
+    margin-right: 1rem;
+    color: #FFF7ED; 
+}
+
+
+/*==================  Setting Page  ===============*/
+
+.settings-container {
+    margin-top: 8rem;
+    max-width: 700px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.settings-box  , .details-box{
+    background-color: #0E1119;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.settings-box label {
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+.settings-box input, .settings-box select {
+    padding: 0.6rem;
+    border-radius: 5px;
+    border: 1px solid #2A2A2A;
+    background-color: #0D0D0D;
+    color: white;
+    font-family: "Roboto Mono", monospace;
+}
+
+.settings-box input:focus, .settings-box select:focus {
+    outline: 1px solid #F97316;
+}
+
+.settings-box button {
+    margin-top: 0.5rem;
+    font-family: "Roboto Mono", monospace;
+    padding: 0.8rem;
+    border-radius: 5px;
+    font-weight: 900;
+    font-size: 0.9rem;
+    border: none;
+    background-color: #F97316;
+    color: white;
+    width: 100%;
+}
+
+
+
+.settings-box button:hover {
+    background-color: #EA580C;
+    cursor: pointer;
+}
+
+#logout-btn {
+    background-color: #0D0D0D;
+    color: #F97316;
+    border: 1px solid #F97316;
+}
+
+#logout-btn:hover {
+    background-color: #1a1a1a;
+    cursor: pointer;
+}
+
+#delete-account-btn {
+    background-color: #FF5E5E;
+    color: white;
+}
+
+#delete-account-btn:hover {
+    background-color: #FF1F1F;
+    cursor: pointer;
+}
+
+
+
+/* Key input box  */
+.key-section {
+    width: 500px;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+}
+
+.key-section input[type="password"] {
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid #2A2A2A;
+    background-color: #0D0D0D;
+    color: white;
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.9rem;
+}
+
+.key-section input[type="password"]:focus {
+    outline: 1px solid #F97316;
+}
+
+#key-limitations p {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+#key-limitations ul {
+    padding-left: 1.5rem;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+}
+
+#key-limitations li {
+    margin-bottom: 0.5rem;
+}
+
+ /*=============  History =============*/
+.history-container{
+    display: flex;
+    /* justify-content: ; */
+    gap: 30px;
+    padding: 2%;
+    flex-wrap: wrap;
+}

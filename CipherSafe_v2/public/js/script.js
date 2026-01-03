@@ -226,6 +226,8 @@ $('#updatePassword').on('click', async () => {
     $("#confirmPassword").val("");
 
     showError("Password updated successfully!",false);
+    // fetch('/logout',{method : 'post'});
+    // location.href = '/signin';
 })
 
 $('#logout-btn').on('click',() => {

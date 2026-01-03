@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+*{
+    margin : 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "IBM Plex Sans", sans-serif;
+}
+body{
+    background-color: #EAF4FF;
+}
+
+.headSection{
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    display: flex;
+}
+
+header{
+    padding: 2rem;
+}
+
+.asideSection {
+    width: 30%;
+    height: 80vh;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+}
+
+.asideSection div {
+    margin-bottom: 20px;
+}
+.asideSection p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.asideSection input[type="radio"] {
+    margin-right: 5px;
+}
+
+.asideSection label {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+#input {
+    width: calc(100% - 20px);
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #0A84FF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #cccccc; 
+    color: #666666;            
+    cursor: not-allowed;       
+    opacity: 0.7;              
+}
+.subHead{
+    font-size: 1.3rem;
+    color: rgba(0,0,0,0.7);
+}
+#closePopup{
+    width: 20px;
+    text-align: center;
+    border-radius: 4px;
+    float: right;
+}
+#closePopup:hover{
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.2);
+    width: 20px;
+    text-align: center;
+
+}
+#msg {
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.flightDataContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    height: 80vh;
+    width: 95%;
+    background-color: white;
+    overflow-y: scroll;
+    overflow-x: clip;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: auto;
+    padding: 10px;
+}
+.flightDataContainer > div{
+    padding-left: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #FFFDF4;
+    width: 100%;
+    font-size: 1.2rem;
+    margin: 0.5rem 1rem;
+}
+.mainSection{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1rem;
+}
+.flightDataContainer > div:hover{
+    cursor: pointer;
+}
+.flightDataContainer .places{
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+.flightPath{
+    width: 100%;
+    border-bottom: 2px dashed black;
+    margin:4px 0;
+}
+.navButtons{
+    display: flex;
+    column-gap: 1rem;
+}
+.durationSection{
+    width: 35%;
+    text-align: center;
+}
+.places{
+    height: 100px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fa-solid{
+    color:#2A2A2A;
+}
+.logo{
+    font-size: 5rem;
+    color: rgba(0,0,0,0.2);
+    margin:auto  2rem;
+    display: block;
+    text-align: center;
+}
+.status{
+    background-color: #B8860B;
+    height: 100px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: white;
+    border-radius: 0 8px 8px 0;
+
+}
+.gate{
+    font-size: 0.9rem;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(2px);
+    z-index: 1;
+}
+
+.popup {
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    background: #EAF4FF;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    width: 300px;  top: 50%;
+    z-index: 2;
+}
+
+.popup-section {
+    margin-bottom: 12px;
+}
+
+.popup-section h3 {
+    margin: 0 0 4px;
+    font-size: 1.2rem;
+}
+
+.hidden {
+    display: none;
+}
+

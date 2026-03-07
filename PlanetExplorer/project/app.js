@@ -17,7 +17,12 @@ app.listen(PORT,() => {
 const paths = ['mercury','venus','earth','mars','jupiter','saturn','uranus','neptune'];
 const colors = ["#419EBB","#EDA249","#6D2ED5","#D14C32","#D83A34","#CD5120","#1EC1E2","#2D68F0"];
 
-app.get('/:planetName{/:name}',(req,res) => {
-    const index = paths.indexOf(req.params.planetName);
-    res.render('index',{title:"Mercury", data : data[index] || data[0],color : {navColor: colors[index] || "#419EBB"}});
+app.get('/',(req,res) => {
+    res.render('index',{title:"Mercury", data : data[0],color : {navColor: "#419EBB"}});
+})
+
+
+app.get('/:planetName',(req,res) => {
+    const index = paths.indexOf(req.params.planetName || 0);
+    res.render('index',{title: paths[index] || "Mercury", data : data[index] || data[0],color : {navColor: colors[index] || "#419EBB"}});
 })

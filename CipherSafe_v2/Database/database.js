@@ -4,9 +4,9 @@ const env = process.env;
 const {log} = console;
 
 const db = mysql.createConnection({
-    host:env.DB_HOST,
-    user: env.DB_USER,
-    password: env.DB_PASSWORD,
+    host:env.HOST,
+    user: env.DBUSER,
+    password: env.PASSWORD,
     database:env.DB_DATABASE
 });
 

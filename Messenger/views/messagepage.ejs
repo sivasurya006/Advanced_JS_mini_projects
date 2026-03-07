@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messenger</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/message.js" defer></script>
+    <script src="https://kit.fontawesome.com/e371a44102.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="messege-page-container">
+        <%-include('partials/sidenav.ejs') %>
+        <main class="message-section">
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass"></i>    
+                <input id="searchBar" type="search" placeholder="search">
+                <div id="searchResults" class="search-results"></div>
+            </div>
+            <section class="quote-section hidden">
+                <div class="page-center">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p class="head">Quote of the day</p>
+                    <h2>Discipline is the bridge between goals and accomplishment.</h2>
+                    <p class="author" >- <span id="author">Jim Rohn</span> -</p>
+                </div>
+                
+            </section>
+            
+
+            <div class="chat-window">
+                <div class="options-section">
+                    <div class="chat-options">
+                        <button class="call-btn" id="callBtn"><i class="fa-solid fa-phone"></i></button>
+                    </div>
+                    <div class="chat-user">
+                        <span id="chat-username">Siva surya</span>
+                    </div>
+                </div>
+            
+                <div class="chat-box-container" id="chatBoxContainer">
+                    <div class="message received">Hello! How are you?</div>
+                    <div class="message sent">I'm good, thanks! How about you?</div>
+                    <div class="message received">Doing great!</div>
+                </div>
+            
+                <div class="tools-section" id="tools">
+                    <input type="text" class="message-box" id="messageInp" placeholder="Type a message...">
+                    <button class="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <div class="video-call-page">
+        <video id="remoteVideo" autoplay controls></video>
+    
+        <div class="local-video-wrapper">
+            <video id="localVideo" autoplay controls></video>
+        </div>
+    
+        <div class="call-controls">
+            <button class="end-call">
+                <i class="fa-solid fa-phone-slash"></i>
+            </button>
+        </div>
+    </div>
+    
+   
+</body>
+</html>
